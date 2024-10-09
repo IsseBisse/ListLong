@@ -18,7 +18,7 @@ type Result struct {
 	size int64
 }
 
-func worker(jobs <-chan Job, results chan<- Result, wg *sync.WaitGroup, printer Printer) {
+func Worker(jobs <-chan Job, results chan<- Result, wg *sync.WaitGroup, printer Printer) {
 	defer wg.Done()
 	for job := range jobs {
 		printer(fmt.Sprintf("%x started", job.id[:4]))

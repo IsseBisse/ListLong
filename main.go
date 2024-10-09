@@ -13,7 +13,7 @@ import (
 
 type Printer func(string)
 
-func listDirectorySize(root string, depth int, verbose bool) {
+func ListLong(root string, depth int, verbose bool) {
 	var printer Printer
 	if verbose {
 		printer = timestampPrintln
@@ -32,7 +32,7 @@ func listDirectorySize(root string, depth int, verbose bool) {
 	numWorkers := 8
 	for wId := 0; wId < numWorkers; wId++ {
 		wg.Add(1)
-		go worker(jobsChannel, results, &wg, printer)
+		go Worker(jobsChannel, results, &wg, printer)
 	}
 
 	for _, job := range jobs {
@@ -87,7 +87,7 @@ func main() {
 			},
 		},
 		Action: func(cCtx *cli.Context) error {
-			listDirectorySize(root, depth, verbose)
+			ListLong(root, depth, verbose)
 			return nil
 		},
 	}

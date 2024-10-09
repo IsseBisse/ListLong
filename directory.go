@@ -50,7 +50,7 @@ func AddResults(directories []Directory, results map[uuid.UUID]int64) ([]Directo
 		directories[idx].filesSize = results[directories[idx].id]
 
 		if len(directories[idx].children) > 0 {
-			// TODO: Passing results down like this could probably be handled nicer
+			// TODO: Passing down results could probably be handled nicer
 			children, childrenSize := AddResults(directories[idx].children, results)
 			directories[idx].children = children
 			directories[idx].totalSize = directories[idx].filesSize + childrenSize
