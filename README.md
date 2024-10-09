@@ -1,3 +1,4 @@
+Usage:
 ```lsl --help
 NAME:
    lsl - windows replica of linux's 'ls -l'
