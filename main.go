@@ -36,6 +36,7 @@ func ListLong(root string, depth int, verbose bool) {
 	}
 
 	for _, job := range jobs {
+		// TODO: Add some kind of progress bar
 		jobsChannel <- job
 	}
 	close(jobsChannel)
@@ -66,7 +67,7 @@ func main() {
 
 	app := &cli.App{
 		Name:  "lsl",
-		Usage: "windows replica of shell command 'ls -l'",
+		Usage: "windows replica of linux's command 'ls -l'",
 		Flags: []cli.Flag{
 			&cli.StringFlag{
 				Name:        "path",
